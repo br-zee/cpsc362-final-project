@@ -5,6 +5,10 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/")
+def home():
+    return {"status": "Backend is running"}
+
 @app.route("/api/members")
 def members():
     return {"members": ["Member 1", "Member 2", "Member 3"]}
