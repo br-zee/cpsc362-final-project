@@ -1,15 +1,16 @@
 import React, { useState, useEffect} from "react";
-import axios from "axios";
 
 function App() {
 
   const [members, setMembers] = useState([{}]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/members`)
-    .then(res => setMembers(res.data.members))
+    fetch(`${process.env.REACT_APP_API_URL}/api/members`)
+    .then(res => res.json())
+    .then(data => setMembers(data.members))
     .catch(err => console.error("API error: ", err));
   }, []);
+
 
   return (
     <div>
