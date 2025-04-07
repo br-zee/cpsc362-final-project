@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 
 function App() {
 
-  const [members, setMembers] = useState([{}]);
+  const [members, setMembers] = useState([]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/api/members`)
@@ -10,7 +10,6 @@ function App() {
     .then(data => setMembers(data.members))
     .catch(err => console.error("API error: ", err));
   }, []);
-
 
   return (
     <div>
